@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدّي الأصدقاء</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="splash-screen" class="view">
+        <div class="splash-content">
+            <h1>تحدّي الأصدقاء</h1>
+            <button id="splash-start-btn" class="start-game-btn">ابدأ اللعب</button>
+            <p class="developer-credit">Developed by Eng. Rami Zaytoun</p>
+        </div>
+    </div>
+
+    <div id="game-container" class="view">
+        <div id="category-screen" class="view">
+             <div class="main-container">
+                <div class="header">
+                    <div class="nav-buttons">
+                        <button id="home-btn-cat" class="nav-btn" title="العودة للرئيسية"><i class="fas fa-home"></i></button>
+                    </div>
+                    <h1>اختر الفئات</h1>
+                </div>
+                <div class="page-content">
+                    <p>٣ فئات لفريقك، و ٣ فئات للفريق المنافس. اختاروا بعناية!</p>
+                    <div class="selection-info"><span id="categories-selected-count">0</span> / 6 فئات تم اختيارها</div>
+                    <div class="category-group">
+                        <h2>جميع الفئات</h2>
+                        <div id="category-grid" class="category-grid"></div>
+                    </div>
+                    <button id="confirm-categories-btn" class="start-game-btn" disabled>إلى لوحة اللعب</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="board-screen" class="view">
+            <div class="game-header">
+                <div class="nav-buttons">
+                    <button id="home-btn-board" class="nav-btn" title="العودة للرئيسية"><i class="fas fa-home"></i></button>
+                    <button id="back-to-cat-btn" class="nav-btn" title="العودة لاختيار الفئات"><i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div id="turn-display" class="turn-display"></div>
+            </div>
+
+            <div id="game-board-container">
+                <div id="board-header"></div>
+                <div id="game-board"></div>
+            </div>
+
+            <div id="game-footer" class="game-footer">
+                <div class="team-info team1">
+                    <div class="name">الفريق الأول</div>
+                    <div class="score">0</div>
+                    <button id="on-fire-btn-team1" class="on-fire-btn" disabled>
+                        ON FIRE 🔥 
+                        <div class="battery">
+                            <div class="battery-level">
+                                <div class="battery-segment"></div>
+                                <div class="battery-segment"></div>
+                                <div class="battery-segment"></div>
+                            </div>
+                            <div class="battery-head"></div>
+                        </div>
+                    </button>
+                </div>
+                <div class="team-info team2">
+                    <div class="name">الفريق الثاني</div>
+                    <div class="score">0</div>
+                    <button id="on-fire-btn-team2" class="on-fire-btn" disabled>
+                        ON FIRE 🔥 
+                        <div class="battery">
+                            <div class="battery-level">
+                                <div class="battery-segment"></div>
+                                <div class="battery-segment"></div>
+                                <div class="battery-segment"></div>
+                            </div>
+                            <div class="battery-head"></div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="question-screen" class="view">
+            <div class="game-header">
+                <div class="nav-buttons">
+                    <button id="home-btn-q" class="nav-btn" title="العودة للرئيسية"><i class="fas fa-home"></i></button>
+                    <button id="back-to-board-btn" class="nav-btn" title="العودة للوحة الأسئلة"><i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="turn-display"></div>
+            </div>
+            <div class="question-container">
+                <div class="question-top-bar">
+                    <div id="question-points"></div>
+                    <div class="timer-container">
+                        <div class="timer-controls">
+                            <button id="timer-reset-btn" class="timer-btn"><i class="fas fa-undo"></i></button>
+                            <button id="timer-toggle-btn" class="timer-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div id="timer-display" class="timer-display">00:00</div>
+                    </div>
+                </div>
+                <div id="question-content" class="question-content">
+                    <p id="question-text"></p>
+                    <img id="question-image" src="" alt="صورة السؤال">
+                </div>
+            </div>
+            <div id="question-footer" class="game-footer">
+                <div class="team-info team1">
+                    <div class="name"></div><div class="score"></div>
+                </div>
+                <button id="show-answer-moderator-btn" class="answer-btn">عرض الإجابة</button>
+                <div class="team-info team2">
+                    <div class="name"></div><div class="score"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="reveal-screen" class="view">
+             <div class="game-header"><div class="turn-display"></div></div>
+            <div class="reveal-container">
+                <h3 id="reveal-answer-text"></h3>
+                <img id="reveal-infographic" src="" alt="معلومات عن الإجابة">
+            </div>
+            <div id="reveal-footer" class="game-footer">
+                <div class="team-info team1">
+                    <div class="name"></div><div class="score"></div>
+                </div>
+                <button id="go-to-award-btn" class="answer-btn">أي فريق أجاب؟</button>
+                <div class="team-info team2">
+                    <div class="name"></div><div class="score"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="award-points-screen" class="view">
+            <div class="game-header"><div class="turn-display"></div></div>
+            <div class="award-container">
+                <h2>لمن تذهب النقاط؟</h2>
+                <div class="award-options">
+                    <button id="award-team1-btn" class="award-btn team1"></button>
+                    <button id="award-team2-btn" class="award-btn team2"></button>
+                    <button id="award-none-btn" class="award-btn none">لا أحد أجاب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-over-screen" class="view">
+        <div class="game-over-content">
+            <h1>نهاية اللعبة!</h1>
+            <div id="winner-announcement"></div>
+            <div class="final-scores">
+                <div id="final-score-team1"></div>
+                <div id="final-score-team2"></div>
+            </div>
+            <button id="play-again-btn" class="start-game-btn">اللعب مرة أخرى</button>
+        </div>
+    </div>
+
+    <div id="setup-modal" class="view modal-overlay">
+        <div class="setup-modal-content">
+            <h2>حدد معلومات الفرق</h2>
+            <div class="teams-container">
+                <div class="team-setup"><input type="text" class="team-name-input" placeholder="اسم الفريق الأول"></div>
+                <div class="team-setup"><input type="text" class="team-name-input" placeholder="اسم الفريق الثاني"></div>
+            </div>
+            <button class="start-game-btn" id="start-game-btn">ابدأ اللعب</button>
+        </div>
+    </div>
+    <div id="password-modal" class="view modal-overlay">
+        <div class="setup-modal-content">
+            <h2>وضع المطور</h2>
+            <p>الرجاء إدخال كلمة السر للوصول.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" placeholder="كلمة السر" required>
+                <button type="submit" class="start-game-btn">دخول</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="developer-screen" class="view">
+        <div class="main-container">
+            <div class="header">
+                <h1>لوحة تحكم المطور</h1>
+                <button id="exit-dev-mode-btn" class="back-btn">رجوع إلى اللعبة</button>
+            </div>
+
+            <div class="dev-section">
+                <h2>إضافة فئة جديدة</h2>
+                <form id="add-category-form">
+                    <input type="text" id="new-cat-name" placeholder="اسم الفئة الجديدة" required>
+                    <input type="url" id="new-cat-img" placeholder="رابط صورة الفئة (اختياري)">
+                    <button type="submit">إضافة فئة</button>
+                </form>
+            </div>
+
+            <div class="dev-section">
+                <h2>إضافة سؤال جديد</h2>
+                <form id="add-question-form">
+                    <select id="category-select" required><option value="">-- اختر الفئة --</option></select>
+                    <select id="points-select" required>
+                        <option value="200">200 نقطة (سهل)</option>
+                        <option value="400">400 نقطة (متوسط)</option>
+                        <option value="600">600 نقطة (صعب)</option>
+                    </select>
+                    <textarea id="new-q-text" placeholder="نص السؤال" required></textarea>
+                    <input type="url" id="new-q-img" placeholder="رابط صورة السؤال (اختياري)">
+                    <p>الإجابة</p>
+                    <input type="text" id="new-q-opt1" placeholder="الإجابة الصحيحة" required>
+                    <input type="url" id="new-q-reveal-img" placeholder="رابط صورة شرح الإجابة (اختياري)">
+                    <button type="submit">حفظ السؤال</button>
+                </form>
+            </div>
+
+            <div class="dev-section" id="manage-questions-section">
+                <h2>إدارة الأسئلة الحالية</h2>
+                <div id="questions-accordion-container">
+                    </div>
+            </div>
+
+             <button id="reset-data-btn" class="danger-btn">إعادة ضبط كل بيانات اللعبة</button>
+             <div class="dev-section">
+                <h2>تصدير البيانات الدائمة</h2>
+                <p>بعد إضافة كل فئاتك وأسئلتك، اضغط على الزر أدناه لإنشاء نسخة دائمة. انسخ النص الذي سيظهر والصقه في ملف script.js داخل متغير DEFAULT_GAME_DATA.</p>
+                <button id="export-data-btn" class="export-btn">تصدير بيانات اللعبة</button>
+                <textarea id="export-textarea" readonly></textarea>
+             </div>
+        </div>
+    </div>
+    
+    <button id="dev-mode-btn" class="dev-mode-btn">⚙️</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
